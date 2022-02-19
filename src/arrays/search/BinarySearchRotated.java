@@ -8,10 +8,30 @@ package arrays.search;
 public class BinarySearchRotated {
 
     public static void main(String[] args) {
-        int[] arr = new int[]{3, 4, 5, 6, 7, 8, 9, 10, 1, 2};
+        int[] arr = new int[]{4, 5, 6, 7, 8, 9, 10, 0, 1, 3};
         int num = findNumber(arr, 0, arr.length - 1, 1);
-        System.out.println(num);
+        System.out.println("Finding number in rotated array: " + num);
+
+        // find minimum number in rotated array
+        int minNum = findMinNumber(arr, 0, arr.length - 1);
+        System.out.println("Minimum number in rotated array: " + minNum);
     }
+
+    private static int findMinNumber(int[] arr, int start, int end) {
+
+        if (start == end) return arr[start];
+
+        if (arr[start] < arr[end]) return arr[start];
+
+        int mid = (start + end) / 2;
+
+        if (arr[start] < arr[mid]) {
+            return findMinNumber(arr, mid + 1, end);
+        } else {
+            return findMinNumber(arr, start, mid);
+        }
+    }
+
 
     private static int findNumber(int[] arr, int start, int end, int value) {
 
@@ -33,4 +53,5 @@ public class BinarySearchRotated {
             return findNumber(arr, start, mid, value);
         }
     }
+
 }
