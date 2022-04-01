@@ -14,7 +14,6 @@ public class Sort012s {
         int l = 0, r = arr.length-1, mid = 0;
 
         while(mid <= r){
-
             if(arr[mid] == 0){
                 swap(arr, mid, l);
                 l++;
